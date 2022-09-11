@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2>Add New Product</h2>
+    <div>
+        <input type="text" id="product" placeholder="Add a new product"/>
+        <button type="button" onclick="Add()">Add</button>
+    </div>
+    <div>
+        <h3>Display All Product</h3>
+        <br>
+        <table id="list_product" border="2" style="width: 200px">
+            <th>Product Name</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </table>
+    </div>
+</body>
+
+<script>
+    let Arr = []
+    let str = document.getElementById('product')
+    let index = 0
+    let ind = 1
+
+    function Add() {
+        
+        str.value
+        Arr.push(str.value)
+        index += 1
+        ind = index * 3.14
+        console.log(index)
+
+        for (let i = 0; i < Arr.length; i++) {
+
+            document.getElementById("list_product").innerHTML += `<tr id=${ind}><td id=${index}>${Arr[i]}</td>
+                                                                    <td><button onclick='Edit(${index})'>Edit</button></td>
+                                                                    <td><button onclick='Delete(${ind})'>Delete</button></td></tr>`
+        }
+
+        Arr.pop()
+        str.value = ''
+
+    }
+
+
+    function Edit(param) {
+
+        let edit = document.getElementById(param)
+        edit.innerHTML = str.value
+        console.log(edit)
+        str.value = ''
+    }
+
+    function Delete(param) {
+        let del = document.getElementById(param)
+        del.remove()
+        console.log(del)
+    }
+
+</script>
+
+</html>
